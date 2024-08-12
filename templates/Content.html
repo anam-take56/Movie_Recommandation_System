@@ -1,0 +1,56 @@
+<!-- templates/Content.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content-Based Recommendations</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f8f9fa;">
+
+    <div class="container mt-5">
+        <div class="jumbotron bg-light">
+            <h1 class="display-4 text-center">Content-Based Recommendations</h1>
+            <p class="lead text-center">Get movie recommendations based on a specific movie.</p>
+
+            <form action="/content" method="post" class="text-center">
+                <div class="form-group">
+                    <label for="movie_title">Movie Title:</label>
+                    <input type="text" class="form-control" id="movie_title" name="movie_title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="num_recommendations">Number of Recommendations:</label>
+                    <input type="number" class="form-control" id="num_recommendations" name="num_recommendations" min="1" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Get Recommendations</button>
+            </form>
+
+            {% if content_recommendations %}
+                <div class="mt-4">
+                    <h2>Recommendations:</h2>
+                    <ul class="list-group">
+                        {% for recommendation in content_recommendations %}
+                            <li class="list-group-item">{{ recommendation }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% else %}
+                <p class="mt-4">No recommendations available.</p>
+            {% endif %}
+
+            <div class="mt-4">
+                <a class="btn btn-secondary" href="/" role="button">Go back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

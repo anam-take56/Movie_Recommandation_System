@@ -1,0 +1,61 @@
+<!-- templates/collaborative.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative-Based Recommendations</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f8f9fa;">
+
+    <div class="container mt-5">
+        <div class="jumbotron bg-light">
+            <h1 class="display-4 text-center">Collaborative-Based Recommendations</h1>
+            <p class="lead text-center">Get movie recommendations based on user collaboration.</p>
+
+            <form action="/collaborative" method="post" class="text-center">
+                <div class="form-group">
+                    <label for="user_id">User ID:</label>
+                    <input type="number" class="form-control" id="user_id" name="user_id" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="num_similar_users">Number of Similar Users:</label>
+                    <input type="number" class="form-control" id="num_similar_users" name="num_similar_users" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="num_recommendations">Number of Recommendations:</label>
+                    <input type="number" class="form-control" id="num_recommendations" name="num_recommendations" min="1" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Get Recommendations</button>
+            </form>
+
+            {% if collaborative_recommendations %}
+                <div class="mt-4">
+                    <h2>Recommendations:</h2>
+                    <ul class="list-group">
+                        {% for recommendation in collaborative_recommendations %}
+                            <li class="list-group-item">{{ recommendation }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% else %}
+                <p class="mt-4">No recommendations available.</p>
+            {% endif %}
+
+            <div class="mt-4">
+                <a class="btn btn-secondary" href="/" role="button">Go back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

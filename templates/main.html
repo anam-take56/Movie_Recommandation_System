@@ -1,0 +1,40 @@
+<!-- templates/main.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="background-color: #f8f9fa;">
+
+    <div class="container mt-5">
+        <div class="jumbotron bg-light">
+            <h1 class="display-4 text-center">Welcome to the Recommendation System</h1>
+            <p class="lead text-center">Choose the type of recommendation you want:</p>
+            <form action="/select-recommendation" method="post" class="text-center">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="recommendationType" id="popularityRadio" value="popularity" checked>
+                    <label class="form-check-label" for="popularityRadio">Popularity-Based</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="recommendationType" id="contentRadio" value="content">
+                    <label class="form-check-label" for="contentRadio">Content-Based</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="recommendationType" id="collaborativeRadio" value="collaborative">
+                    <label class="form-check-label" for="collaborativeRadio">Collaborative-Based</label>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Select Recommendation Type</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
